@@ -225,7 +225,7 @@ class FlutterBluetoothSerial {
           onDone: controller.close,
         );
 
-    yield* controller.stream
+    yield* controller.stream.where((map) => map["name"] != null)
         .map((map) => BluetoothDiscoveryResult.fromMap(map));
   }
 
