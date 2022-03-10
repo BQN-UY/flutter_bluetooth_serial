@@ -217,13 +217,13 @@ class FlutterBluetoothSerial {
       },
     );
 
-    await _methodChannel.invokeMethod('startDiscovery');
-
-    subscription = _discoveryChannel.receiveBroadcastStream().listen(
+     subscription = _discoveryChannel.receiveBroadcastStream().listen(
           controller.add,
           onError: controller.addError,
           onDone: controller.close,
         );
+
+    await _methodChannel.invokeMethod('startDiscovery');
 
     yield* controller.stream.where((map) => map["name"] != null)
         .map((map) => BluetoothDiscoveryResult.fromMap(map));
