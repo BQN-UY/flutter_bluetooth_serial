@@ -498,6 +498,7 @@ public class FlutterBluetoothSerialPlugin implements FlutterPlugin, ActivityAwar
         boolean hasPermissions = true;
         for (String permission : requiredPermissions) {
             if (ContextCompat.checkSelfPermission(activeContext, permission) != PackageManager.PERMISSION_GRANTED) {
+                Log.d(TAG, "Doesn't have permission: " + permission);
                 hasPermissions = false;
                 break;
             }
@@ -506,6 +507,7 @@ public class FlutterBluetoothSerialPlugin implements FlutterPlugin, ActivityAwar
             ActivityCompat.requestPermissions(activity, requiredPermissions, requestCode);
             pendingPermissionsEnsureCallbacks = callbacks;
         } else {
+            Log.d(TAG, "Had all neccesary permissions");
             callbacks.onResult(true);
         }
     }
