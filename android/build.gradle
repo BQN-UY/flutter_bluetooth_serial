@@ -49,6 +49,9 @@ android {
         minSdkVersion 19
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
+    namespace "io.github.edufolly.flutterbluetoothserial"
+
     lintOptions {
         disable 'InvalidPackage'
     }
